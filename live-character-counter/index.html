@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Character Counter</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <section class="card">
+      <h1>Wyślij wiadomość</h1>
+      <p class="description">
+        Napisz krótką wiadomość. Tekst musi mieć od 10 do 120 znaków.
+      </p>
+
+      <form class="message-form" id="message-form">
+        <label for="message">Twoja wiadomość</label>
+
+        <textarea id="message" class="message-input" placeholder="Wpisz wiadomość..." rows="6"></textarea>
+
+        <div class="meta">
+          <p class="feedback" id="feedback">Wpisz minimum 10 znaków.</p>
+          <p class="counter">
+            Pozostało:
+            <span id="characters-left">120</span>
+          </p>
+        </div>
+
+        <button class="submit-btn" id="submit-btn" type="submit" disabled>
+          Wyślij
+        </button>
+
+        <p class="success-message" id="success-message"></p>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>
