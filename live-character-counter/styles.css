@@ -91,12 +91,12 @@ label {
   color: #34d399;
 }
 
-.counter.warning {
-  color: #facc15;
-}
-
 .counter.error {
   color: #f87171;
+}
+
+.counter.valid {
+  color: #34d399;
 }
 
 .submit-btn {
