@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ Accordion</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./main.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <section class="faq-card">
+      <p class="eyebrow">Projekt JavaScript</p>
+      <h1>FAQ Accordion</h1>
+      <p class="description">
+        Kliknij pytanie, aby rozwinąć lub ukryć odpowiedź.
+      </p>
+
+      <div class="faq-list" id="faq-list">
+        <article class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Czym różni się JavaScript od Reacta?</span>
+            <span class="faq-icon">+</span>
+          </button>
+
+          <div class="faq-answer">
+            <p>
+              JavaScript to język programowania, a React to biblioteka
+              zbudowana na JavaScript. W tym projekcie ćwiczysz czystą
+              manipulację DOM bez Reacta.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Po co używać event delegation?</span>
+            <span class="faq-icon">+</span>
+          </button>
+
+          <div class="faq-answer">
+            <p>
+              Event delegation pozwala obsłużyć wiele elementów jednym
+              listenerem na rodzicu. To przydatne, gdy elementy są dynamiczne
+              albo jest ich dużo.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Co robi metoda closest()?</span>
+            <span class="faq-icon">+</span>
+          </button>
+
+          <div class="faq-answer">
+            <p>
+              closest() szuka najbliższego rodzica, który pasuje do podanego
+              selektora. Może też zwrócić sam kliknięty element, jeśli pasuje
+              do selektora.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Dlaczego warto rozdzielać logikę od UI?</span>
+            <span class="faq-icon">+</span>
+          </button>
+
+          <div class="faq-answer">
+            <p>
+              Dzięki temu kod jest łatwiejszy do czytania, testowania i
+              poprawiania. Najpierw określasz stan, a potem aktualizujesz
+              wygląd strony.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
