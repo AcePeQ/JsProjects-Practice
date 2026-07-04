@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping List</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <section class="shopping-card">
+      <p class="eyebrow">Projekt JavaScript</p>
+      <h1>Lista zakupów</h1>
+      <p class="description">
+        Dodawaj produkty, oznaczaj je jako kupione i usuwaj z listy.
+      </p>
+
+      <form class="shopping-form" id="shopping-form">
+        <label for="item-input">Nazwa produktu</label>
+
+        <div class="form-row">
+          <input id="item-input" class="item-input" type="text" placeholder="Np. mleko, chleb, jabłka..."
+            autocomplete="off" />
+
+          <button class="add-btn" type="submit">
+            Dodaj
+          </button>
+        </div>
+
+        <p class="form-error" id="form-error"></p>
+      </form>
+
+      <div class="stats">
+        <p>Wszystkie: <span id="total-count">0</span></p>
+        <p>Kupione: <span id="completed-count">0</span></p>
+      </div>
+
+      <div class="list-header">
+        <h2>Produkty</h2>
+        <button class="clear-btn" id="clear-btn" type="button">
+          Wyczyść listę
+        </button>
+      </div>
+
+      <p class="empty-state" id="empty-state">
+        Lista jest pusta. Dodaj pierwszy produkt.
+      </p>
+
+      <ul class="shopping-list" id="shopping-list"></ul>
+    </section>
+  </main>
+</body>
+
+</html>
