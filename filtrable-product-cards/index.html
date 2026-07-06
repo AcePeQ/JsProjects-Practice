@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filterable Product Cards</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <section class="products-card">
+      <p class="eyebrow">Projekt JavaScript</p>
+      <h1>Product Explorer</h1>
+      <p class="description">
+        Wyszukuj, filtruj i sortuj produkty na podstawie danych z tablicy.
+      </p>
+
+      <form class="filters" id="filters-form">
+        <div class="field">
+          <label for="search-input">Szukaj produktu</label>
+          <input id="search-input" type="text" placeholder="Np. laptop, monitor, myszka..." autocomplete="off" />
+        </div>
+
+        <div class="field">
+          <label for="category-select">Kategoria</label>
+          <select id="category-select">
+            <option value="all">Wszystkie</option>
+            <option value="electronics">Elektronika</option>
+            <option value="accessories">Akcesoria</option>
+            <option value="office">Biuro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="max-price-input">Maksymalna cena</label>
+          <input id="max-price-input" type="number" min="0" placeholder="Np. 500" />
+        </div>
+
+        <div class="field">
+          <label for="sort-select">Sortowanie</label>
+          <select id="sort-select">
+            <option value="default">Domyślnie</option>
+            <option value="price-asc">Cena rosnąco</option>
+            <option value="price-desc">Cena malejąco</option>
+          </select>
+        </div>
+
+        <button class="reset-btn" id="reset-btn" type="button">
+          Resetuj filtry
+        </button>
+      </form>
+
+      <div class="results-bar">
+        <p>
+          Znaleziono:
+          <span id="results-count">0</span>
+        </p>
+      </div>
+
+      <p class="empty-state" id="empty-state">
+        Brak produktów pasujących do filtrów.
+      </p>
+
+      <section class="products-grid" id="products-grid"></section>
+    </section>
+  </main>
+</body>
+
+</html>
