@@ -8,13 +8,21 @@ function init() {
   const completedCountEl = document.querySelector("#completed-count")
   const cleanBtnEl = document.querySelector("#clear-btn")
 
-  let productList = [];
+  let productList = getLocalStorageList() ?? [];
 
   const uniqueId = () => {
     const dateString = Date.now().toString(36);
     const randomness = Math.random().toString(36).substr(2);
     return dateString + randomness;
   };
+
+  function saveLocalStorageList() {
+    localStorage.setItem("list", JSON.stringify(productList));
+  }
+
+  function getLocalStorageList() {
+    return JSON.parse(localStorage.getItem("list"));
+  }
 
   function createItem(product) {
     if (!product) return;
@@ -76,18 +84,25 @@ function init() {
     shoppingListEl.textContent = "";
 
     updateCounters();
+    saveLocalStorageList();
 
     if (listLength === 0) {
       emptyStateEl.classList.remove("hidden");
+      cleanBtnEl.disabled = true;
       return;
     }
 
+    const sortedList = productList.toSorted((p1, p2) => p1.completed === p2.completed ? 0 : p1.completed ? 1 : -1);
+
+    cleanBtnEl.disabled = false;
     emptyStateEl.classList.add("hidden");
-    productList.forEach(createItem)
+    sortedList.forEach(createItem)
+
   }
 
   function clearList() {
     productList = [];
+    localStorage.removeItem("list");
     renderList();
   }
 
@@ -99,6 +114,14 @@ function init() {
     if (!productName) {
       itemInputEl.classList.add("error");
       formErrorEl.textContent = "Invalid product name! Please try again!"
+      return;
+    }
+
+    const isSimilarProduct = productList.some(product => product.name?.toLowerCase() === productName?.toLowerCase());
+
+    if (isSimilarProduct) {
+      itemInputEl.classList.add("error");
+      formErrorEl.textContent = "This product is already in the list!"
       return;
     }
 
@@ -122,9 +145,11 @@ function init() {
     if (!button) return;
 
     const btnAction = button.dataset.action;
-    const closestListItemId = button.closest(".shopping-item").dataset.id;
+    const closestListItem = button.closest(".shopping-item");
 
-    if (!closestListItemId) return;
+    if (!closestListItem) return;
+
+    const closestListItemId = closestListItem.dataset.id
 
     switch (btnAction) {
       case "complete":
@@ -142,6 +167,9 @@ function init() {
   shoppingFormEl.addEventListener("submit", handleAddProduct);
   shoppingListEl.addEventListener("click", handleAction);
   cleanBtnEl.addEventListener("click", clearList);
+
+
+  renderList();
 };
 
 
