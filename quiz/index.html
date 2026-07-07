@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="questions.js" type="module" defer></script>
+  <script src="script.js" type="module" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <section class="quiz-card">
+      <p class="eyebrow">Projekt JavaScript</p>
+
+      <div class="quiz-header">
+        <div>
+          <h1>JavaScript Quiz</h1>
+          <p class="description">
+            Sprawdź swoją wiedzę z podstaw JavaScript.
+          </p>
+        </div>
+
+        <p class="score">
+          Wynik:
+          <span id="score">0</span>
+        </p>
+      </div>
+
+      <div class="progress">
+        <p id="question-counter">Pytanie 1 z 5</p>
+        <div class="progress-track">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <section class="question-box" id="question-box">
+        <h2 id="question-title"></h2>
+
+        <div class="answers-list" id="answers-list"></div>
+
+        <p class="feedback" id="feedback"></p>
+      </section>
+
+      <div class="actions">
+        <button class="next-btn" id="next-btn" type="button" disabled>
+          Następne pytanie
+        </button>
+      </div>
+
+      <section class="result-box hidden" id="result-box">
+        <h2>Quiz zakończony</h2>
+        <p id="result-message"></p>
+
+        <button class="restart-btn" id="restart-btn" type="button">
+          Zacznij od nowa
+        </button>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>
