@@ -6,6 +6,8 @@ function init() {
   const questionProgressEl = document.querySelector("#progress-bar");
   const questionTitleEl = document.querySelector("#question-title");
 
+  const progressBarEl = document.querySelector(".progress");
+
   const questionBoxEl = document.querySelector("#question-box");
   const answersListEl = document.querySelector("#answers-list");
   const feedbackEl = document.querySelector("#feedback");
@@ -55,7 +57,8 @@ function init() {
     feedbackEl.classList.add("correct");
     feedbackEl.textContent = "Correct! You answered right!"
 
-    score += 10;
+    score += 1;
+    updateScore();
   }
 
   function handleInCorrectAnswer(button, correctAnswerId) {
@@ -85,6 +88,7 @@ function init() {
     updateQuestionInfo();
     updateProgressBar();
 
+
     const currentQuestion = getCurrentQuestion();
 
     questionTitleEl.textContent = currentQuestion.question;
@@ -99,18 +103,48 @@ function init() {
     questionProgressEl.style.width = `${(currentQuestionIndex + 1) * (100 / questionsLength)}%`
   }
 
+  function updateScore() {
+    scoreEl.textContent = score;
+  }
+
+  function handleResult() {
+    updateScore()
+
+    nextBtnEl.classList.add("hidden");
+    questionBoxEl.classList.add("hidden");
+    progressBarEl.classList.add("hidden");
+
+    resultMessageEl.textContent = `Twój wynik: ${score}/${questions.length}`;
+    resultBoxEl.classList.remove("hidden");
+  }
+
+  function resetGame() {
+    currentQuestionIndex = 0;
+    score = 0;
+    hasAnswered = false;
+
+    updateScore();
+
+    nextBtnEl.classList.remove("hidden");
+    questionBoxEl.classList.remove("hidden");
+    progressBarEl.classList.remove("hidden");
+
+    resultBoxEl.classList.add("hidden");
+
+    renderQuestion();
+  }
+
   function handleNextQuestion() {
     if (!hasAnswered) return;
     currentQuestionIndex++;
 
-    const isLastQuestion = questions.length - 1 === currentQuestionIndex;
-    if (!isLastQuestion) {
+    if (currentQuestionIndex < questions.length) {
       renderQuestion();
-      resetFeedback();
       return;
     }
 
-    console.log("no")
+
+    handleResult();
   }
 
   answersListEl.addEventListener("click", function handleClick(event) {
@@ -123,6 +157,8 @@ function init() {
   })
 
   nextBtnEl.addEventListener("click", handleNextQuestion);
+  restartBtnEl.addEventListener("click", resetGame)
+
 
   renderQuestion();
 }
