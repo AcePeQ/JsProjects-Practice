@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+  display: grid;
+  place-items: center;
+}
+
+.app {
+  width: min(100% - 32px, 860px);
+  padding-block: 32px;
+}
+
+.game-card {
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #38bdf8;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+h1,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: 36px;
+}
+
+.description {
+  margin-bottom: 0;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.stats p {
+  margin: 0;
+  padding: 10px 14px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.status-message {
+  min-height: 24px;
+  margin-bottom: 20px;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.status-message.success {
+  color: #34d399;
+}
+
+.status-message.error {
+  color: #f87171;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.memory-card {
+  position: relative;
+  border: 2px solid #334155;
+  border-radius: 18px;
+  min-height: 120px;
+  background: #1e293b;
+  color: #f8fafc;
+  font: inherit;
+  font-size: 42px;
+  font-weight: 800;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.memory-card:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+}
+
+.memory-card:disabled {
+  cursor: not-allowed;
+}
+
+.memory-card .card-front {
+  display: none;
+}
+
+.memory-card .card-back {
+  display: block;
+}
+
+.memory-card.flipped .card-front,
+.memory-card.matched .card-front {
+  display: block;
+}
+
+.memory-card.flipped .card-back,
+.memory-card.matched .card-back {
+  display: none;
+}
+
+.memory-card.flipped {
+  border-color: #38bdf8;
+  background: #0f172a;
+}
+
+.memory-card.matched {
+  border-color: #34d399;
+  background: rgba(52, 211, 153, 0.14);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.reset-btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 18px;
+  background: #2563eb;
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 700px) {
+  .game-header {
+    display: grid;
+  }
+
+  .stats {
+    justify-content: flex-start;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .game-card {
+    padding: 24px;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .memory-card {
+    min-height: 100px;
+  }
+}
