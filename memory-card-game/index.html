@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Cards Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <section class="game-card">
+      <p class="eyebrow">Projekt JavaScript</p>
+
+      <div class="game-header">
+        <div>
+          <h1>Memory Cards</h1>
+          <p class="description">
+            Odkrywaj karty i znajdź wszystkie pasujące pary.
+          </p>
+        </div>
+
+        <div class="stats">
+          <p>Ruchy: <span id="moves-count">0</span></p>
+          <p>Pary: <span id="pairs-count">0</span>/6</p>
+        </div>
+      </div>
+
+      <p class="status-message" id="status-message">
+        Wybierz pierwszą kartę.
+      </p>
+
+      <section class="memory-grid" id="memory-grid"></section>
+
+      <div class="actions">
+        <button class="reset-btn" id="reset-btn" type="button">
+          Resetuj grę
+        </button>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
